@@ -9,10 +9,10 @@ public class ResultUnwrapTests
     {
         // Arrange.
         var result = Result<string, int>.Successful("Success");
-        
+
         // Act.
         var value = result.Unwrap();
-        
+
         // Assert.
         value.ShouldBe("Success");
     }
@@ -22,10 +22,10 @@ public class ResultUnwrapTests
     {
         // Arrange.
         var result = Result<string, int>.Erroneous(10);
-        
+
         // Act.
         var func = () => result.Unwrap();
-        
+
         // Assert.
         func.ShouldThrow<InvalidOperationException>();
     }

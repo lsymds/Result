@@ -3,7 +3,7 @@
 namespace LSymds.Result;
 
 /// <summary>
-/// A monad representing either a successful result or an erroneous result. 
+/// A monad representing either a successful result or an erroneous result.
 /// </summary>
 /// <typeparam name="TSuccess">The type of the successful result's data.</typeparam>
 /// <typeparam name="TError">The type of the erroneous result's error.</typeparam>
@@ -30,23 +30,23 @@ public class Result<TSuccess, TError>
         IsError = true;
         Error = erroneous;
     }
-    
+
     /// <summary>
     /// Gets the data when <see cref="IsSuccess"/> is true. Will return null if it is not.
     /// </summary>
     public TSuccess? Data { get; }
-    
+
     /// <summary>
     /// Gets the error when <see cref="IsError"/> is true. Will return null if it is not.
     /// </summary>
-    public TError? Error { get; } 
-    
+    public TError? Error { get; }
+
     /// <summary>
     /// Gets whether or not the result is a successful result.
     /// </summary>
     [MemberNotNullWhen(true, nameof(Data))]
     public bool IsSuccess { get; }
-    
+
     /// <summary>
     /// Gets whether or not the result is an erroneous result.
     /// </summary>
@@ -61,7 +61,7 @@ public class Result<TSuccess, TError>
     /// <typeparam name="TNewSuccess">The new type of the successful data value.</typeparam>
     public Result<TNewSuccess, TError> Map<TNewSuccess>(Func<TSuccess, TNewSuccess> dataMapper)
     {
-        return IsSuccess 
+        return IsSuccess
             ? new Result<TNewSuccess, TError>(dataMapper(Data!))
             : new Result<TNewSuccess, TError>(Error!);
     }
@@ -81,14 +81,16 @@ public class Result<TSuccess, TError>
 
     /// <summary>
     /// Unsafely extracts the value of <see cref="Data"/>, throwing an <see cref="InvalidOperationException"/> if
-    /// <see cref="IsSuccess"/> is false.  
+    /// <see cref="IsSuccess"/> is false.
     /// </summary>
     /// <exception cref="InvalidOperationException">Thrown when <see cref="IsSuccess"/> is false.</exception>
     public TSuccess Unwrap()
     {
         if (!IsSuccess)
         {
-            throw new InvalidOperationException("Unable to retrieve Data value as Result is in an erroneous state.");
+            throw new InvalidOperationException(
+                "Unable to retrieve Data value as Result is in an erroneous state."
+            );
         }
 
         return Data!;
@@ -101,9 +103,7 @@ public class Result<TSuccess, TError>
     /// <param name="or">The alternative value to return when <see cref="IsSuccess"/> is false.</param>
     public TSuccess UnwrapOrElse(TSuccess or)
     {
-        return IsSuccess
-            ? Data
-            : or;
+        return IsSuccess ? Data : or;
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class Result<TSuccess, TError>
     public static Result<TSuccess, TError> Successful(TSuccess success)
     {
         return new Result<TSuccess, TError>(success);
-    }   
+    }
 
     /// <summary>
     /// Creates a <see cref="Result{TSuccess,TError}"/> in an erroneous state with the provided error.

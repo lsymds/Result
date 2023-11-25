@@ -9,7 +9,7 @@ public class ResultCreationTests
     {
         // Act.
         var result = Result<Nothing, Exception>.Successful(Nothing.Instance);
-        
+
         // Assert.
         result.IsSuccess.ShouldBeTrue();
         result.IsError.ShouldBeFalse();
@@ -22,7 +22,7 @@ public class ResultCreationTests
     {
         // Act.
         var result = Result<Nothing, string>.Erroneous("Oh no.");
-        
+
         // Assert.
         result.IsSuccess.ShouldBeFalse();
         result.IsError.ShouldBeTrue();

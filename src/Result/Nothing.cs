@@ -5,9 +5,7 @@
 /// </summary>
 public class Nothing
 {
-    private Nothing()
-    {
-    }
+    private Nothing() { }
 
     /// <summary>
     /// Gets the singleton instance of the <see cref="Nothing"/> class.

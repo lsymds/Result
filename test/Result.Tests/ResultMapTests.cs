@@ -9,10 +9,10 @@ public class ResultMapTests
     {
         // Arrange.
         var existingResult = Result<Nothing, string>.Successful(Nothing.Instance);
-        
+
         // Act.
         var result = existingResult.Map(_ => "Foo");
-        
+
         // Assert.
         result.IsSuccess.ShouldBeTrue();
         result.IsError.ShouldBeFalse();
@@ -25,10 +25,10 @@ public class ResultMapTests
     {
         // Arrange.
         var existingResult = Result<Nothing, string>.Erroneous("Oh no.");
-        
+
         // Act.
         var result = existingResult.Map(_ => "Foo");
-        
+
         // Assert.
         result.IsSuccess.ShouldBeFalse();
         result.IsError.ShouldBeTrue();
