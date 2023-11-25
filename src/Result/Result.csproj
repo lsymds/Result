@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>LSymds.Result</RootNamespace>
+    <PackageId>LSymds.Result</PackageId>
+    <Title>LSymds.Result</Title>
+    <Authors>lsymds</Authors>
+    <Description>A Result monad for .NET.</Description>
+    <Copyright>lsymds</Copyright>
+    <PackageProjectUrl>https://github.com/lsymds/Result</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/lsymds/Result</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/lsymds/Result</RepositoryUrl>
+    <PackageTags>result monad,result,monad</PackageTags>
+  </PropertyGroup>
+
+</Project>
