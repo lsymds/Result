@@ -45,12 +45,14 @@ public class Result<TSuccess, TError>
     /// Gets whether or not the result is a successful result.
     /// </summary>
     [MemberNotNullWhen(true, nameof(Data))]
+    [MemberNotNullWhen(false, nameof(Error))]
     public bool IsSuccess { get; }
 
     /// <summary>
     /// Gets whether or not the result is an erroneous result.
     /// </summary>
     [MemberNotNullWhen(true, nameof(Error))]
+    [MemberNotNullWhen(false, nameof(Data))]
     public bool IsError { get; set; }
 
     /// <summary>
