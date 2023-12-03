@@ -7,7 +7,7 @@ namespace LSymds.Result;
 /// </summary>
 /// <typeparam name="TSuccess">The type of the successful result's data.</typeparam>
 /// <typeparam name="TError">The type of the erroneous result's error.</typeparam>
-public class Result<TSuccess, TError>
+public record Result<TSuccess, TError>
 {
     /// <summary>
     /// Initialises a new instance of the <see cref="Result{TSuccess,TError}"/> class in a successful state.
